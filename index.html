@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator - Internet Tools Hub</title>
+    <meta name="description" content="Create QR codes quickly and easily from text or URLs with Internet Tools Hub.">
+    <meta property="og:title" content="QR Code Generator - Internet Tools Hub">
+    <meta property="og:description" content="Create QR codes quickly and easily from text or URLs with Internet Tools Hub.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="/" class="logo">Internet Tools Hub</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/" class="active" aria-current="page">QR Code Generator</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>QR Code Generator</h1>
+            <p>Create QR codes instantly from any text or URL. Free, fast, and no sign-up required.</p>
+        </section>
+
+        <!-- Generator Section -->
+        <section class="generator-section" aria-label="QR Code Generator">
+            <div class="card">
+                <!-- Input Area -->
+                <div class="input-group">
+                    <label for="input-text">Enter text or URL</label>
+                    <textarea
+                        id="input-text"
+                        placeholder="Type or paste your text or URL here..."
+                        rows="4"
+                        aria-describedby="error-msg"
+                    ></textarea>
+                    <p id="error-msg" class="error-msg" role="alert" aria-live="assertive"></p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button id="generate-btn" type="button">Generate QR Code</button>
+                    <button id="clear-btn" type="button" class="btn-secondary">Clear</button>
+                </div>
+
+                <div class="divider" aria-hidden="true"></div>
+
+                <!-- QR Preview Area -->
+                <div class="preview-area">
+                    <div id="qr-placeholder" class="qr-placeholder">
+                        <p>Your QR code will appear here</p>
+                    </div>
+                    <div id="qr-container" class="qr-container" aria-live="polite"></div>
+                </div>
+
+                <!-- Download Button -->
+                <button id="download-btn" type="button" class="btn-download" disabled>Download QR Code</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Internet Tools Hub</p>
+            <p>Made by <a href="https://mrcodex1241.pythonanywhere.com" target="_blank" rel="noopener noreferrer">Mr. CodeX</a></p>
+        </div>
+    </footer>
+
+    <!-- QR Code Library (client-side, no API needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
