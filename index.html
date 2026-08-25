@@ -3,84 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator - Internet Tools Hub</title>
-    <meta name="description" content="Create QR codes quickly and easily from text or URLs with Internet Tools Hub.">
-    <meta property="og:title" content="QR Code Generator - Internet Tools Hub">
-    <meta property="og:description" content="Create QR codes quickly and easily from text or URLs with Internet Tools Hub.">
-    <meta property="og:type" content="website">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Internet Tools Hub - Free Online Tools</title>
+
+    <meta name="description"
+          content="Internet Tools Hub provides free, fast and useful online tools for everyday tasks.">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <a href="/" class="logo">Internet Tools Hub</a>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/" class="active" aria-current="page">QR Code Generator</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <a href="/" class="logo">Internet Tools Hub</a>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>QR Code Generator</h1>
-            <p>Create QR codes instantly from any text or URL. Free, fast, and no sign-up required.</p>
-        </section>
+        <ul class="nav-links">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="#tools">Tools</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <!-- Generator Section -->
-        <section class="generator-section" aria-label="QR Code Generator">
-            <div class="card">
-                <!-- Input Area -->
-                <div class="input-group">
-                    <label for="input-text">Enter text or URL</label>
-                    <textarea
-                        id="input-text"
-                        placeholder="Type or paste your text or URL here..."
-                        rows="4"
-                        aria-describedby="error-msg"
-                    ></textarea>
-                    <p id="error-msg" class="error-msg" role="alert" aria-live="assertive"></p>
-                </div>
 
-                <!-- Action Buttons -->
-                <div class="action-buttons">
-                    <button id="generate-btn" type="button">Generate QR Code</button>
-                    <button id="clear-btn" type="button" class="btn-secondary">Clear</button>
-                </div>
+<main>
 
-                <div class="divider" aria-hidden="true"></div>
+    <!-- Hero -->
+    <section class="hero">
 
-                <!-- QR Preview Area -->
-                <div class="preview-area">
-                    <div id="qr-placeholder" class="qr-placeholder">
-                        <p>Your QR code will appear here</p>
-                    </div>
-                    <div id="qr-container" class="qr-container" aria-live="polite"></div>
-                </div>
+        <span class="badge">Free Online Tools</span>
 
-                <!-- Download Button -->
-                <button id="download-btn" type="button" class="btn-download" disabled>Download QR Code</button>
-            </div>
-        </section>
-    </main>
+        <h1>
+            Useful Tools.<br>
+            All in One Place.
+        </h1>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Internet Tools Hub</p>
-            <p>Made by <a href="https://mrcodex1241.pythonanywhere.com" target="_blank" rel="noopener noreferrer">Mr. CodeX</a></p>
+        <p>
+            Fast, simple and free online tools for your everyday digital needs.
+        </p>
+
+        <a href="#tools" class="hero-btn">
+            Explore Tools
+        </a>
+
+    </section>
+
+
+    <!-- Tools -->
+    <section id="tools" class="tools-section">
+
+        <div class="section-heading">
+            <h2>Our Tools</h2>
+            <p>Choose a tool and get things done quickly.</p>
         </div>
-    </footer>
 
-    <!-- QR Code Library (client-side, no API needed) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="script.js"></script>
+
+        <div class="tools-grid">
+
+
+            <!-- QR Code -->
+            <a href="qr-generator.html" class="tool-card">
+
+                <div class="tool-icon">
+                    QR
+                </div>
+
+                <div class="tool-content">
+                    <h3>QR Code Generator</h3>
+
+                    <p>
+                        Generate QR codes from text or URLs instantly.
+                    </p>
+
+                    <span class="tool-status live">
+                        Live
+                    </span>
+                </div>
+
+            </a>
+
+
+            <!-- Password -->
+            <div class="tool-card disabled">
+
+                <div class="tool-icon">
+                    PW
+                </div>
+
+                <div class="tool-content">
+                    <h3>Password Generator</h3>
+
+                    <p>
+                        Create strong and secure passwords.
+                    </p>
+
+                    <span class="tool-status">
+                        Coming Soon
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- Word Counter -->
+            <div class="tool-card disabled">
+
+                <div class="tool-icon">
+                    WC
+                </div>
+
+                <div class="tool-content">
+                    <h3>Word Counter</h3>
+
+                    <p>
+                        Count words, characters and sentences.
+                    </p>
+
+                    <span class="tool-status">
+                        Coming Soon
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- Case Converter -->
+            <div class="tool-card disabled">
+
+                <div class="tool-icon">
+                    Aa
+                </div>
+
+                <div class="tool-content">
+                    <h3>Text Case Converter</h3>
+
+                    <p>
+                        Convert text to uppercase, lowercase and more.
+                    </p>
+
+                    <span class="tool-status">
+                        Coming Soon
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- JSON Formatter -->
+            <div class="tool-card disabled">
+
+                <div class="tool-icon">
+                    {}
+                </div>
+
+                <div class="tool-content">
+                    <h3>JSON Formatter</h3>
+
+                    <p>
+                        Format and organize JSON data easily.
+                    </p>
+
+                    <span class="tool-status">
+                        Coming Soon
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- Base64 -->
+            <div class="tool-card disabled">
+
+                <div class="tool-icon">
+                    64
+                </div>
+
+                <div class="tool-content">
+                    <h3>Base64 Encoder</h3>
+
+                    <p>
+                        Encode and decode Base64 text quickly.
+                    </p>
+
+                    <span class="tool-status">
+                        Coming Soon
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+    <section class="about">
+
+        <h2>Why Internet Tools Hub?</h2>
+
+        <p>
+            Our goal is to create simple, fast and useful tools that
+            anyone can use without complicated setup or unnecessary
+            registration.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <p>
+            © 2026 Internet Tools Hub
+        </p>
+
+        <p>
+            Made by
+            <a href="https://mrcodex1241.pythonanywhere.com"
+               target="_blank"
+               rel="noopener noreferrer">
+                Mr. CodeX
+            </a>
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>
