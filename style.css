@@ -370,3 +370,124 @@ footer {
         padding: 18px;
     }
 }
+/* ========================================
+   QR Generator Page
+======================================== */
+
+.generator-section {
+    width: 100%;
+}
+
+.generator-section .card {
+    max-width: 520px;
+}
+
+
+/* QR Preview */
+
+.preview-area {
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 20px 0;
+}
+
+
+.qr-placeholder {
+    width: 100%;
+    min-height: 260px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px dashed #D1D5DB;
+    border-radius: 16px;
+
+    background: rgba(255,255,255,.55);
+}
+
+
+.qr-placeholder p {
+    color: #9CA3AF;
+    font-size: 14px;
+}
+
+
+.qr-container {
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+
+.qr-container.has-qr {
+    display: flex;
+}
+
+
+.qr-container canvas {
+    width: 240px !important;
+    height: 240px !important;
+
+    max-width: 100%;
+
+    padding: 10px;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.08);
+}
+
+
+/* QR Buttons */
+
+#generate-btn {
+    cursor: pointer;
+}
+
+
+.btn-download {
+    cursor: pointer;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .generator-section .card {
+        padding: 20px 16px;
+    }
+
+    .preview-area {
+        min-height: 240px;
+    }
+
+    .qr-placeholder {
+        min-height: 220px;
+    }
+
+    .qr-container canvas {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    #generate-btn,
+    .btn-secondary {
+        width: 100%;
+    }
+
+}
