@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Generate strong random passwords with Internet Tools Hub."
+    >
+
+    <meta
+        name="theme-color"
+        content="#059669"
+    >
+
+    <title>Password Generator | Internet Tools Hub</title>
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Password Generator CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a
+                href="../../index.html"
+                class="brand"
+            >
+                Internet Tools Hub
+            </a>
+
+            <a
+                href="../../index.html"
+                class="back-link"
+            >
+                All Tools
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================================
+         MAIN
+    ================================= -->
+
+    <main class="main-content">
+
+        <!-- Tool Intro -->
+
+        <section class="tool-intro">
+
+            <span class="tool-badge">
+                Free Tool
+            </span>
+
+            <h1>
+                Password Generator
+            </h1>
+
+            <p>
+                Generate strong random passwords
+                quickly and easily.
+            </p>
+
+        </section>
+
+
+        <!-- ================================
+             PASSWORD GENERATOR
+        ================================= -->
+
+        <section class="generator-card">
+
+            <!-- Password Output -->
+
+            <div class="password-output-section">
+
+                <label
+                    for="password-output"
+                    class="input-label"
+                >
+                    Generated Password
+                </label>
+
+                <div class="password-output-wrapper">
+
+                    <input
+                        id="password-output"
+                        class="password-output"
+                        type="text"
+                        readonly
+                        placeholder="Your password will appear here"
+                        autocomplete="off"
+                    >
+
+                    <button
+                        id="copy-btn"
+                        class="copy-btn"
+                        type="button"
+                        disabled
+                    >
+                        Copy
+                    </button>
+
+                </div>
+
+                <p
+                    id="copy-message"
+                    class="status-message"
+                    aria-live="polite"
+                ></p>
+
+            </div>
+
+
+            <!-- Password Length -->
+
+            <div class="setting-section">
+
+                <div class="setting-header">
+
+                    <label
+                        for="password-length"
+                        class="input-label"
+                    >
+                        Password Length
+                    </label>
+
+                    <span
+                        id="length-value"
+                        class="length-value"
+                    >
+                        16
+                    </span>
+
+                </div>
+
+                <input
+                    id="password-length"
+                    class="length-slider"
+                    type="range"
+                    min="4"
+                    max="64"
+                    value="16"
+                >
+
+                <div class="range-labels">
+                    <span>4</span>
+                    <span>64</span>
+                </div>
+
+            </div>
+
+
+            <!-- Character Options -->
+
+            <div class="setting-section">
+
+                <h2 class="section-title">
+                    Include Characters
+                </h2>
+
+
+                <label class="checkbox-option">
+
+                    <input
+                        id="uppercase"
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="custom-checkbox"></span>
+
+                    <span class="checkbox-text">
+                        Uppercase letters
+                        <small>A-Z</small>
+                    </span>
+
+                </label>
+
+
+                <label class="checkbox-option">
+
+                    <input
+                        id="lowercase"
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="custom-checkbox"></span>
+
+                    <span class="checkbox-text">
+                        Lowercase letters
+                        <small>a-z</small>
+                    </span>
+
+                </label>
+
+
+                <label class="checkbox-option">
+
+                    <input
+                        id="numbers"
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="custom-checkbox"></span>
+
+                    <span class="checkbox-text">
+                        Numbers
+                        <small>0-9</small>
+                    </span>
+
+                </label>
+
+
+                <label class="checkbox-option">
+
+                    <input
+                        id="symbols"
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="custom-checkbox"></span>
+
+                    <span class="checkbox-text">
+                        Symbols
+                        <small>!@#$%</small>
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <!-- Strength -->
+
+            <div class="strength-section">
+
+                <div class="strength-header">
+
+                    <span>
+                        Password Strength
+                    </span>
+
+                    <strong
+                        id="strength-text"
+                    >
+                        Strong
+                    </strong>
+
+                </div>
+
+                <div class="strength-bar">
+
+                    <div
+                        id="strength-fill"
+                        class="strength-fill"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Generate Button -->
+
+            <button
+                id="generate-btn"
+                class="btn btn-primary"
+                type="button"
+            >
+                Generate Password
+            </button>
+
+        </section>
+
+
+        <!-- ================================
+             INFO
+        ================================= -->
+
+        <section class="tool-info">
+
+            <h2>
+                How to use
+            </h2>
+
+            <ol>
+
+                <li>
+                    Choose your desired password length.
+                </li>
+
+                <li>
+                    Select the character types you want.
+                </li>
+
+                <li>
+                    Click <strong>Generate Password</strong>.
+                </li>
+
+                <li>
+                    Click <strong>Copy</strong> to copy the password.
+                </li>
+
+            </ol>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer class="site-footer">
+
+        <p>
+            © 2026 Internet Tools Hub
+        </p>
+
+        <p>
+            Made by
+            <a
+                href="https://mrcodex1241.pythonanywhere.com"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Mr. CodeX
+            </a>
+        </p>
+
+    </footer>
+
+
+    <!-- Password Generator JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
