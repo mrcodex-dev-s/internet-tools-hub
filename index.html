@@ -1,224 +1,813 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Internet Tools Hub - Free Online Tools</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description"
-          content="Internet Tools Hub provides free, fast and useful online tools for everyday tasks.">
+    <meta
+        name="description"
+        content="Internet Tools Hub - Free online tools for everyday tasks."
+    >
 
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
+    <meta
+        name="theme-color"
+        content="#059669"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>Internet Tools Hub</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                "Outfit",
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            color: #17201c;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(16, 185, 129, 0.08),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(16, 185, 129, 0.06),
+                    transparent 35%
+                ),
+                #f4f7f5;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background:
+                rgba(255, 255, 255, 0.82);
+
+            border-bottom:
+                1px solid rgba(17, 24, 39, 0.07);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .header-container {
+            width: min(
+                1100px,
+                calc(100% - 32px)
+            );
+
+            height: 68px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: #17201c;
+
+            font-size: 19px;
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #059669;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            width: min(
+                1000px,
+                calc(100% - 32px)
+            );
+
+            margin: auto;
+
+            padding:
+                90px 0
+                55px;
+
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+
+            padding:
+                6px 13px;
+
+            margin-bottom: 18px;
+
+            border:
+                1px solid #a7f3d0;
+
+            border-radius: 999px;
+
+            background: #ecfdf5;
+
+            color: #047857;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            color: #111827;
+
+            font-size:
+                clamp(42px, 8vw, 72px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2.5px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #059669;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #6b7280;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           TOOLS SECTION
+        ========================= */
+
+        .tools-section {
+            width: min(
+                1100px,
+                calc(100% - 32px)
+            );
+
+            margin: auto;
+
+            padding:
+                20px 0
+                80px;
+        }
+
+        .section-header {
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            color: #111827;
+
+            font-size: 26px;
+
+            letter-spacing: -0.6px;
+        }
+
+        .section-header p {
+            margin-top: 5px;
+
+            color: #6b7280;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           TOOL GRID
+        ========================= */
+
+        .tools-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        /* =========================
+           TOOL CARD
+        ========================= */
+
+        .tool-card {
+            position: relative;
+
+            display: block;
+
+            min-height: 190px;
+
+            padding: 24px;
+
+            background:
+                rgba(255, 255, 255, 0.84);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.95);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(15, 23, 42, 0.05);
+
+            text-decoration: none;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+
+            border-color: #a7f3d0;
+
+            box-shadow:
+                0 18px 40px
+                rgba(15, 23, 42, 0.08);
+        }
+
+        .tool-icon {
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 13px;
+
+            background: #ecfdf5;
+
+            color: #059669;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .tool-card h3 {
+            margin-bottom: 7px;
+
+            color: #1f2937;
+
+            font-size: 18px;
+        }
+
+        .tool-card p {
+            color: #6b7280;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .tool-status {
+            position: absolute;
+
+            top: 20px;
+            right: 20px;
+
+            padding:
+                4px 9px;
+
+            border-radius: 999px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 0.2px;
+        }
+
+        .tool-status.live {
+            background: #ecfdf5;
+
+            color: #047857;
+
+            border:
+                1px solid #a7f3d0;
+        }
+
+        .tool-status.soon {
+            background: #f3f4f6;
+
+            color: #9ca3af;
+
+            border:
+                1px solid #e5e7eb;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: auto;
+
+            padding:
+                28px 20px;
+
+            text-align: center;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            background:
+                rgba(255, 255, 255, 0.65);
+        }
+
+        footer p {
+            color: #9ca3af;
+
+            font-size: 13px;
+
+            line-height: 1.9;
+        }
+
+        footer a {
+            color: #059669;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .tools-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .hero {
+                padding-top: 70px;
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 560px) {
+
+            .header-container {
+                height: 60px;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .hero {
+                padding:
+                    55px 0
+                    40px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+
+                letter-spacing: -1.5px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+
+                gap: 13px;
+            }
+
+            .tool-card {
+                min-height: 165px;
+
+                padding: 21px;
+            }
+
+            .section-header h2 {
+                font-size: 23px;
+            }
+        }
+
+
+        /* =========================
+           SMALL MOBILE
+        ========================= */
+
+        @media (max-width: 360px) {
+
+            .hero h1 {
+                font-size: 37px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .tool-card h3 {
+                font-size: 17px;
+            }
+        }
+
+
+        /* =========================
+           REDUCED MOTION
+        ========================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+
 </head>
+
 
 <body>
 
-<header>
-    <nav>
-        <a href="/" class="logo">Internet Tools Hub</a>
 
-        <ul class="nav-links">
-            <li><a href="/" class="active">Home</a></li>
-            <li><a href="#tools">Tools</a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="header-container">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+                Internet Tools <span>Hub</span>
+            </a>
+
+        </div>
+
+    </header>
 
 
-<main>
+    <!-- =========================
+         HERO
+    ========================= -->
 
-    <!-- Hero -->
     <section class="hero">
 
-        <span class="badge">Free Online Tools</span>
+        <span class="badge">
+            Free Online Tools
+        </span>
 
         <h1>
-            Useful Tools.<br>
-            All in One Place.
+            Simple Tools.
+            <span>Better Internet.</span>
         </h1>
 
         <p>
-            Fast, simple and free online tools for your everyday digital needs.
+            Useful, fast and free online tools
+            for everyday digital tasks.
         </p>
-
-        <a href="#tools" class="hero-btn">
-            Explore Tools
-        </a>
 
     </section>
 
 
-    <!-- Tools -->
-    <section id="tools" class="tools-section">
+    <!-- =========================
+         TOOLS
+    ========================= -->
 
-        <div class="section-heading">
-            <h2>Our Tools</h2>
-            <p>Choose a tool and get things done quickly.</p>
+    <main class="tools-section">
+
+        <div class="section-header">
+
+            <h2>
+                All Tools
+            </h2>
+
+            <p>
+                Choose a tool to get started.
+            </p>
+
         </div>
 
 
         <div class="tools-grid">
 
 
-            <!-- QR Code -->
-            <a href="qr-generator.html" class="tool-card">
+            <!-- QR GENERATOR -->
+
+            <a
+                href="tools/qr-generator/index.html"
+                class="tool-card"
+            >
+
+                <span class="tool-status live">
+                    Live
+                </span>
 
                 <div class="tool-icon">
                     QR
                 </div>
 
-                <div class="tool-content">
-                    <h3>QR Code Generator</h3>
+                <h3>
+                    QR Code Generator
+                </h3>
 
-                    <p>
-                        Generate QR codes from text or URLs instantly.
-                    </p>
-
-                    <span class="tool-status live">
-                        Live
-                    </span>
-                </div>
+                <p>
+                    Create and download QR codes
+                    instantly from text or URLs.
+                </p>
 
             </a>
 
 
-            <!-- Password -->
-            <div class="tool-card disabled">
+            <!-- PASSWORD GENERATOR -->
+
+            <a
+                href="tools/password-generator/index.html"
+                class="tool-card"
+            >
+
+                <span class="tool-status live">
+                    Live
+                </span>
 
                 <div class="tool-icon">
                     PW
                 </div>
 
-                <div class="tool-content">
-                    <h3>Password Generator</h3>
+                <h3>
+                    Password Generator
+                </h3>
 
-                    <p>
-                        Create strong and secure passwords.
-                    </p>
+                <p>
+                    Create strong and secure
+                    random passwords.
+                </p>
 
-                    <span class="tool-status">
-                        Coming Soon
-                    </span>
-                </div>
-
-            </div>
+            </a>
 
 
-            <!-- Word Counter -->
-            <div class="tool-card disabled">
+            <!-- WORD COUNTER -->
+
+            <div class="tool-card">
+
+                <span class="tool-status soon">
+                    Coming Soon
+                </span>
 
                 <div class="tool-icon">
                     WC
                 </div>
 
-                <div class="tool-content">
-                    <h3>Word Counter</h3>
+                <h3>
+                    Word Counter
+                </h3>
 
-                    <p>
-                        Count words, characters and sentences.
-                    </p>
-
-                    <span class="tool-status">
-                        Coming Soon
-                    </span>
-                </div>
+                <p>
+                    Count words, characters and
+                    sentences quickly.
+                </p>
 
             </div>
 
 
-            <!-- Case Converter -->
-            <div class="tool-card disabled">
+            <!-- TEXT CASE -->
+
+            <div class="tool-card">
+
+                <span class="tool-status soon">
+                    Coming Soon
+                </span>
 
                 <div class="tool-icon">
                     Aa
                 </div>
 
-                <div class="tool-content">
-                    <h3>Text Case Converter</h3>
+                <h3>
+                    Text Case Converter
+                </h3>
 
-                    <p>
-                        Convert text to uppercase, lowercase and more.
-                    </p>
-
-                    <span class="tool-status">
-                        Coming Soon
-                    </span>
-                </div>
+                <p>
+                    Convert text between different
+                    letter cases.
+                </p>
 
             </div>
 
 
-            <!-- JSON Formatter -->
-            <div class="tool-card disabled">
+            <!-- JSON FORMATTER -->
+
+            <div class="tool-card">
+
+                <span class="tool-status soon">
+                    Coming Soon
+                </span>
 
                 <div class="tool-icon">
                     {}
                 </div>
 
-                <div class="tool-content">
-                    <h3>JSON Formatter</h3>
+                <h3>
+                    JSON Formatter
+                </h3>
 
-                    <p>
-                        Format and organize JSON data easily.
-                    </p>
-
-                    <span class="tool-status">
-                        Coming Soon
-                    </span>
-                </div>
+                <p>
+                    Format and organize JSON data
+                    with ease.
+                </p>
 
             </div>
 
 
-            <!-- Base64 -->
-            <div class="tool-card disabled">
+            <!-- BASE64 -->
+
+            <div class="tool-card">
+
+                <span class="tool-status soon">
+                    Coming Soon
+                </span>
 
                 <div class="tool-icon">
                     64
                 </div>
 
-                <div class="tool-content">
-                    <h3>Base64 Encoder</h3>
+                <h3>
+                    Base64 Encoder
+                </h3>
 
-                    <p>
-                        Encode and decode Base64 text quickly.
-                    </p>
+                <p>
+                    Encode and decode Base64
+                    text directly in your browser.
+                </p>
 
-                    <span class="tool-status">
-                        Coming Soon
-                    </span>
+            </div>
+
+
+            <!-- URL ENCODER -->
+
+            <div class="tool-card">
+
+                <span class="tool-status soon">
+                    Coming Soon
+                </span>
+
+                <div class="tool-icon">
+                    URL
                 </div>
+
+                <h3>
+                    URL Encoder
+                </h3>
+
+                <p>
+                    Encode and decode URLs quickly
+                    and easily.
+                </p>
+
+            </div>
+
+
+            <!-- UUID -->
+
+            <div class="tool-card">
+
+                <span class="tool-status soon">
+                    Coming Soon
+                </span>
+
+                <div class="tool-icon">
+                    ID
+                </div>
+
+                <h3>
+                    UUID Generator
+                </h3>
+
+                <p>
+                    Generate unique UUIDs instantly.
+                </p>
+
+            </div>
+
+
+            <!-- TIMESTAMP -->
+
+            <div class="tool-card">
+
+                <span class="tool-status soon">
+                    Coming Soon
+                </span>
+
+                <div class="tool-icon">
+                    TS
+                </div>
+
+                <h3>
+                    Timestamp Converter
+                </h3>
+
+                <p>
+                    Convert Unix timestamps into
+                    readable dates.
+                </p>
 
             </div>
 
         </div>
 
-    </section>
+    </main>
 
 
-    <!-- About -->
-    <section class="about">
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
-        <h2>Why Internet Tools Hub?</h2>
-
-        <p>
-            Our goal is to create simple, fast and useful tools that
-            anyone can use without complicated setup or unnecessary
-            registration.
-        </p>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <div class="footer-content">
+    <footer>
 
         <p>
             © 2026 Internet Tools Hub
@@ -226,18 +815,18 @@
 
         <p>
             Made by
-            <a href="https://mrcodex1241.pythonanywhere.com"
-               target="_blank"
-               rel="noopener noreferrer">
+            <a
+                href="https://mrcodex1241.pythonanywhere.com"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 Mr. CodeX
             </a>
         </p>
 
-    </div>
+    </footer>
 
-</footer>
-
-<script src="script.js"></script>
 
 </body>
+
 </html>
