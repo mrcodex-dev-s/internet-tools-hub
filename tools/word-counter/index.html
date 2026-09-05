@@ -1,0 +1,133 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Free online Word Counter. Count words, characters, sentences and paragraphs instantly.">
+    <meta name="keywords"
+        content="word counter, character counter, sentence counter, online word counter, text counter">
+    <meta name="author" content="Internet Tools Hub">
+
+    <title>Word Counter - Internet Tools Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="tool-page">
+
+        <header class="tool-header">
+            <a href="../../" class="back-link" aria-label="Back to Internet Tools Hub">
+                ← Back to Tools
+            </a>
+
+            <div class="header-content">
+                <div class="tool-icon">Aa</div>
+
+                <div>
+                    <h1>Word Counter</h1>
+                    <p>Count words, characters and sentences quickly.</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="counter-card">
+
+            <div class="stats-grid">
+
+                <div class="stat-box">
+                    <span class="stat-value" id="wordCount">0</span>
+                    <span class="stat-label">Words</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-value" id="characterCount">0</span>
+                    <span class="stat-label">Characters</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-value" id="characterNoSpaceCount">0</span>
+                    <span class="stat-label">Without Spaces</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-value" id="sentenceCount">0</span>
+                    <span class="stat-label">Sentences</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-value" id="paragraphCount">0</span>
+                    <span class="stat-label">Paragraphs</span>
+                </div>
+
+            </div>
+
+            <div class="input-wrapper">
+                <label for="textInput">Enter or paste your text</label>
+
+                <textarea
+                    id="textInput"
+                    placeholder="Start typing or paste your text here..."
+                    spellcheck="true"
+                    autofocus
+                ></textarea>
+
+                <div class="input-footer">
+                    <span id="textStatus">Ready to count</span>
+                    <span id="charLimit">0 characters</span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button type="button" class="btn btn-secondary" id="copyBtn">
+                    Copy Text
+                </button>
+
+                <button type="button" class="btn btn-danger" id="clearBtn">
+                    Clear
+                </button>
+            </div>
+
+        </section>
+
+        <section class="info-card">
+            <h2>About Word Counter</h2>
+
+            <p>
+                Word Counter is a simple and fast online text analysis tool.
+                Enter your text above to instantly see the number of words,
+                characters, sentences and paragraphs.
+            </p>
+
+            <div class="features">
+                <div>
+                    <strong>Real-time</strong>
+                    <span>Counts update as you type.</span>
+                </div>
+
+                <div>
+                    <strong>Private</strong>
+                    <span>Your text stays in your browser.</span>
+                </div>
+
+                <div>
+                    <strong>Free</strong>
+                    <span>No registration required.</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Internet Tools Hub. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
