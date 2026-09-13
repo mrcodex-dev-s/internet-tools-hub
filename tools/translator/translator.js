@@ -1,86 +1,82 @@
-const sourceLanguage =
-    document.getElementById("sourceLanguage");
+document.addEventListener("DOMContentLoaded", () => {
 
-const targetLanguage =
-    document.getElementById("targetLanguage");
+    const sourceLanguage = document.getElementById("sourceLanguage");
+    const targetLanguage = document.getElementById("targetLanguage");
 
-const sourceText =
-    document.getElementById("sourceText");
+    const sourceText = document.getElementById("sourceText");
+    const resultText = document.getElementById("resultText");
 
-const resultText =
-    document.getElementById("resultText");
+    const translateBtn = document.getElementById("translateBtn");
+    const swapBtn = document.getElementById("swapBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const copyBtn = document.getElementById("copyBtn");
 
-const translateBtn =
-    document.getElementById("translateBtn");
-
-const swapBtn =
-    document.getElementById("swapBtn");
-
-const clearBtn =
-    document.getElementById("clearBtn");
-
-const copyBtn =
-    document.getElementById("copyBtn");
-
-const charCount =
-    document.getElementById("charCount");
-
-const sourceLabel =
-    document.getElementById("sourceLabel");
-
-const targetLabel =
-    document.getElementById("targetLabel");
-
-const status =
-    document.getElementById("status");
+    const charCount = document.getElementById("charCount");
+    const sourceLabel = document.getElementById("sourceLabel");
+    const targetLabel = document.getElementById("targetLabel");
+    const status = document.getElementById("status");
 
 
-// Cloudflare Worker backend
-
-const API_URL =
-    "https://black-bar-de04.mr-codex1241.workers.dev/api/translate";
-
-
-// ------------------------------------
-// LANGUAGE LABELS
-// ------------------------------------
-
-function updateLabels() {
-
-    sourceLabel.textContent =
-        sourceLanguage.value === "en"
-            ? "English"
-            : "বাংলা";
-
-    targetLabel.textContent =
-        targetLanguage.value === "en"
-            ? "English"
-            : "বাংলা";
-}
+    // Your Cloudflare Worker API
+    const API_URL =
+        "https://black-bar-de04.mr-codex1241.workers.dev/api/translate";
 
 
-// ------------------------------------
-// CHARACTER COUNT
-// ------------------------------------
+    // -----------------------------
+    // LANGUAGE LABELS
+    // -----------------------------
 
-sourceText.addEventListener(
-    "input",
-    () => {
+    function updateLabels() {
+
+        sourceLabel.textContent =
+            sourceLanguage.value === "en"
+                ? "English"
+                : "বাংলা";
+
+        targetLabel.textContent =
+            targetLanguage.value === "en"
+                ? "English"
+                : "বাংলা";
+    }
+
+
+    // -----------------------------
+    // CHARACTER COUNT
+    // -----------------------------
+
+    sourceText.addEventListener("input", () => {
 
         charCount.textContent =
             `${sourceText.value.length} / 5000`;
 
-    }
-);
+    });
 
 
-// ------------------------------------
-// SWAP LANGUAGES
-// ------------------------------------
+    // -----------------------------
+    // CLEAR
+    // -----------------------------
 
-swapBtn.addEventListener(
-    "click",
-    () => {
+    clearBtn.addEventListener("click", () => {
+
+        sourceText.value = "";
+
+        resultText.textContent =
+            "Translation will appear here...";
+
+        resultText.classList.add("placeholder");
+
+        charCount.textContent = "0 / 5000";
+
+        status.textContent = "";
+
+    });
+
+
+    // -----------------------------
+    // SWAP
+    // -----------------------------
+
+    swapBtn.addEventListener("click", () => {
 
         const oldSource =
             sourceLanguage.value;
@@ -92,63 +88,66 @@ swapBtn.addEventListener(
             oldSource;
 
 
-        const oldText =
+        const oldSourceText =
             sourceText.value;
 
-        const oldResult =
+        const oldResultText =
             resultText.textContent;
 
 
-        sourceText.value =
-            oldResult ===
+        if (
+            oldResultText &&
+            oldResultText !==
             "Translation will appear here..."
-                ? ""
-                : oldResult;
+        ) {
 
+            sourceText.value =
+                oldResultText;
 
-        resultText.textContent =
-            oldText ||
-            "Translation will appear here...";
+            resultText.textContent =
+                oldSourceText ||
+                "Translation will appear here...";
 
-
-        resultText.classList.toggle(
-            "placeholder",
-            !oldText
-        );
+        }
 
 
         charCount.textContent =
             `${sourceText.value.length} / 5000`;
 
 
+        resultText.classList.toggle(
+            "placeholder",
+            !oldSourceText
+        );
+
+
         updateLabels();
 
-    }
-);
+        status.textContent = "";
+
+    });
 
 
-// ------------------------------------
-// LANGUAGE CHANGE
-// ------------------------------------
+    // -----------------------------
+    // LANGUAGE CHANGE
+    // -----------------------------
 
-sourceLanguage.addEventListener(
-    "change",
-    updateLabels
-);
+    sourceLanguage.addEventListener(
+        "change",
+        updateLabels
+    );
 
-targetLanguage.addEventListener(
-    "change",
-    updateLabels
-);
+    targetLanguage.addEventListener(
+        "change",
+        updateLabels
+    );
 
 
-// ------------------------------------
-// TRANSLATE
-// ------------------------------------
+    // -----------------------------
+    // TRANSLATE
+    // -----------------------------
 
-translateBtn.addEventListener(
-    "click",
-    async () => {
+    translateBtn.addEventListener("click", async () => {
 
         const text =
             sourceText.value.trim();
@@ -172,18 +171,30 @@ translateBtn.addEventListener(
         }
 
 
+        // Prevent same-language translation
+        if (
+            sourceLanguage.value ===
+            targetLanguage.value
+        ) {
+
+            status.textContent =
+                "Please select two different languages.";
+
+            return;
+        }
+
+
         translateBtn.disabled = true;
 
         translateBtn.textContent =
             "Translating...";
 
-
         status.textContent =
-            "Connecting to AI translator...";
+            "Translating...";
 
 
         resultText.textContent =
-            "Translating...";
+            "Please wait...";
 
         resultText.classList.remove(
             "placeholder"
@@ -193,44 +204,55 @@ translateBtn.addEventListener(
         try {
 
             const response =
-                await fetch(
-                    API_URL,
-                    {
-                        method: "POST",
+                await fetch(API_URL, {
 
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
+                    method: "POST",
 
-                        body: JSON.stringify({
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-                            text: text,
+                    body: JSON.stringify({
 
-                            from:
-                                sourceLanguage.value === "en"
-                                    ? "English"
-                                    : "Bengali",
+                        text: text,
 
-                            to:
-                                targetLanguage.value === "en"
-                                    ? "English"
-                                    : "Bengali"
+                        from:
+                            sourceLanguage.value === "en"
+                                ? "English"
+                                : "Bengali",
 
-                        })
-                    }
+                        to:
+                            targetLanguage.value === "en"
+                                ? "English"
+                                : "Bengali"
+
+                    })
+
+                });
+
+
+            let data;
+
+            try {
+
+                data =
+                    await response.json();
+
+            } catch {
+
+                throw new Error(
+                    "Server returned an invalid response."
                 );
 
-
-            const data =
-                await response.json();
+            }
 
 
             if (!response.ok) {
 
                 throw new Error(
                     data.error ||
-                    "Translation request failed."
+                    `Server error: ${response.status}`
                 );
 
             }
@@ -239,7 +261,7 @@ translateBtn.addEventListener(
             if (!data.translation) {
 
                 throw new Error(
-                    "No translation received."
+                    "No translation was returned."
                 );
 
             }
@@ -248,11 +270,9 @@ translateBtn.addEventListener(
             resultText.textContent =
                 data.translation.trim();
 
-
             resultText.classList.remove(
                 "placeholder"
             );
-
 
             status.textContent =
                 "Translation completed.";
@@ -261,14 +281,13 @@ translateBtn.addEventListener(
         } catch (error) {
 
             console.error(
-                "Translator error:",
+                "Translation error:",
                 error
             );
 
 
             resultText.textContent =
-                "Translation failed. Please try again.";
-
+                "Translation failed.";
 
             resultText.classList.add(
                 "placeholder"
@@ -277,55 +296,24 @@ translateBtn.addEventListener(
 
             status.textContent =
                 error.message ||
-                "Something went wrong.";
-
-        } finally {
-
-            translateBtn.disabled =
-                false;
-
-            translateBtn.textContent =
-                "Translate";
+                "Could not connect to translator.";
 
         }
 
-    }
-);
+
+        translateBtn.disabled = false;
+
+        translateBtn.textContent =
+            "Translate";
+
+    });
 
 
-// ------------------------------------
-// CLEAR
-// ------------------------------------
+    // -----------------------------
+    // COPY
+    // -----------------------------
 
-clearBtn.addEventListener(
-    "click",
-    () => {
-
-        sourceText.value = "";
-
-        resultText.textContent =
-            "Translation will appear here...";
-
-        resultText.classList.add(
-            "placeholder"
-        );
-
-        charCount.textContent =
-            "0 / 5000";
-
-        status.textContent = "";
-
-    }
-);
-
-
-// ------------------------------------
-// COPY
-// ------------------------------------
-
-copyBtn.addEventListener(
-    "click",
-    async () => {
+    copyBtn.addEventListener("click", async () => {
 
         const text =
             resultText.textContent;
@@ -337,6 +325,9 @@ copyBtn.addEventListener(
             "Translation will appear here..."
         ) {
 
+            status.textContent =
+                "Nothing to copy.";
+
             return;
         }
 
@@ -347,38 +338,39 @@ copyBtn.addEventListener(
                 text
             );
 
+            copyBtn.textContent =
+                "Copied!";
 
             status.textContent =
                 "Translation copied.";
 
-            copyBtn.textContent =
-                "Copied!";
+
+            setTimeout(() => {
+
+                copyBtn.textContent =
+                    "Copy";
+
+            }, 1200);
 
 
-            setTimeout(
-                () => {
-
-                    copyBtn.textContent =
-                        "Copy";
-
-                },
-                1200
-            );
-
-
-        } catch (error) {
+        } catch {
 
             status.textContent =
-                "Could not copy the translation.";
+                "Could not copy text.";
 
         }
 
-    }
-);
+    });
 
 
-// ------------------------------------
-// INITIALIZE
-// ------------------------------------
+    // -----------------------------
+    // INITIALIZE
+    // -----------------------------
 
-updateLabels();
+    updateLabels();
+
+    console.log(
+        "Internet Tools Hub Translator loaded."
+    );
+
+});
